@@ -77,7 +77,7 @@ desired effect
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
             <!-- Menu toggle button -->
-            <a href="/admin/logout" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
               <span class="label label-success">4</span>
             </a>
@@ -172,7 +172,7 @@ desired effect
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
               <!-- The user image in the navbar-->
               <img src="/res/admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
@@ -216,7 +216,7 @@ desired effect
           </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears">           </i></a>
           </li>
         </ul>
       </div>
@@ -256,19 +256,49 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
-        </li>
+        <li><a href="/admin/users"><i class="fa fa-users"></i> <span>Usuários</span></a></li>
+        <li><a href="/admin/categories"><i class="fa fa-link"></i> <span>Categorias</span></a></li>
+        <li><a href="/admin/products"><i class="fa fa-link"></i> <span>Produtos</span></a></li>
+        <li><a href="/admin/orders"><i class="fa fa-shopping-cart"></i> <span>Pedidos</span></a></li>
+
+
+<!-- jQuery 2.2.3 -->
+<script src="/res/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.6 -->
+<script src="/res/admin/bootstrap/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="/res/admin/plugins/morris/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="/res/admin/plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="/res/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/res/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/res/admin/plugins/knob/jquery.knob.js"></script>
+<!-- daterangepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="/res/admin/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="/res/admin/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="/res/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="/res/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/res/admin/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/res/admin/dist/js/app.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/res/admin/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/res/admin/dist/js/demo.js"></script>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
