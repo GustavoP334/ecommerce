@@ -1,0 +1,15 @@
+{
+    "name": "gustavo/composer",
+    "description": "Aula PHP 7",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Gustavo",
+            "email": "gpassosdelima@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "monolog/monolog":"1.0.*"
+    }
+}
