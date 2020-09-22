@@ -9,6 +9,8 @@ class User extends Model{
 
 	const SESSION = "User";
 
+	const SECRET = "HcodePhp7_Secret";
+
 
 	public static function login($login, $password)
 	{
@@ -54,7 +56,7 @@ class User extends Model{
 			!(int)$_SESSION[User::SESSION]["iduser"] > 0
 			||
 			(bool)$_SESSION[User::SESSION]["inadmin"] !== $inadmin
-		) {
+		){
 
 			header("Location: /admin/login");
 			exit;
@@ -106,7 +108,11 @@ class User extends Model{
 			":iduser"=>$iduser
 		));	
 
-		$this->setData($results[0]);
+		$data = $results[0];
+		
+		$data['desperson'] = utf8_encode($data['desperson']);
+ 
+		$this->setData($data);
 	}
 
 	public function update()
@@ -138,6 +144,65 @@ class User extends Model{
 
 	}
 
+	public static function getForgot($email, $inadmin = true)
+	{
+
+		$sql = new Sql();
+
+		$results = $sql->select("
+			SELECT * 
+			FROM db_ecommerce.tb_persons a
+			INNER JOIN db_ecommerce.tb_persons b USING(idperson)
+			WHERE a.desemail = '206412019@eniac.edu.br';
+			", array(
+				":email"=>$email
+			));
+
+		if (count($results)=== 0)
+		{
+
+			throw new \Exception("Não foi possível recuperar a senha.");
+
+		}
+		else
+		{
+			$data = $results[0];
+
+			$results2 = $sql->select("CALL sp_userspasswordsrecoveries_create(:iduser, :desip)", array(
+				":iduser"=>$data["iduser"],
+				":desip"=>$_SERVER["REMOTE_ADDR"]
+			));
+
+			if (count($results2) === 0)
+			{
+
+				throw new \Exception("Não foi possível recuperar a senha.");
+			}
+			else
+			{
+
+				$dataRecovery = $results2[0];
+				$iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+             	$code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', User::SECRET, 0, $iv);
+            	 $result = base64_encode($iv.$code);
+            	 if ($inadmin === true) {
+                 $link = "http://www.hcodecommerce.com.br/admin/forgot/reset?code=$result";
+             	} else {
+                 $link = "http://www.hcodecommerce.com.br/forgot/reset?code=$result";
+             	} 
+             	$mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir senha da Hcode Store", "forgot", array(
+                 "name"=>$data['desperson'],
+                 "link"=>$link
+             	)); 
+             	$mailer->send();
+             	return $link;
+
+			}
+
+		}
+	}
+
+	
 }
 
 
